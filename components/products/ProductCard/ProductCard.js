@@ -14,7 +14,7 @@ function ProductCard({product}) {
 	const {productName, productPrice, imageUrl, productDescription, uid} = {...product};
 
 	return (
-        <Card height="35rem" position="relative">
+        <Card height="34rem" position="relative">
             <Box borderBottom="1px solid lightgrey" padding="1rem">
                 <Flex justifyContent="end">
                     <Text fontSize="2rem" color="grey">
