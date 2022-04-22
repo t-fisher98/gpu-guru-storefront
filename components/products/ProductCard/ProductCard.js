@@ -28,7 +28,7 @@ function ProductCard({product}) {
                 <Text lineHeight="1.25">{productDescription}</Text>
             </Flex>
             <Flex position="absolute" right="1rem" bottom="1rem">
-                <form>
+                <form method="POST" action='/api/checkout'>
                     <input type="hidden" name="uid" value={uid} />
                     <Button
                         type="submit"

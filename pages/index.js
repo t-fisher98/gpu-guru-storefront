@@ -1,14 +1,18 @@
-
-//https://storefront-dashboard-21366-default-rtdb.firebaseio.com/products.json
 import Head from 'next/head';
 
-import { Box, Center, Heading, Text } from '@chakra-ui/react'
+import { loadStripe } from '@stripe/stripe-js';
 
+import { Box, Center, Heading, Text } from '@chakra-ui/react'
 import ProductCard from "../components/products/ProductCard/ProductCard";
+
 
 export default function Home(props) {
 
 	const products = props.products;
+
+	const stripePromies = loadStripe(
+        process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+    );
 
 	return (
         <>
@@ -32,9 +36,9 @@ export default function Home(props) {
                         Welcome to GPU Guru
                     </Heading>
                     <Center gap="2rem" flexWrap="wrap" maxW="80%">
-                        {products.map((product) => (
+                        {products.length >= 3 ? products.map((product) => (
                             <ProductCard key={product.uid} product={product} />
-                        ))}
+                        )) : null}
                     </Center>
                 </Center>
                 <Center
@@ -57,8 +61,6 @@ export async function getStaticProps(){
 	const res = await fetch('https://storefront-dashboard-21366-default-rtdb.firebaseio.com/products.json');
 	const productData = await res.json();
 	const products = Object.values(productData);
-
-	console.log(products)
 
 	return {
         props: { 
