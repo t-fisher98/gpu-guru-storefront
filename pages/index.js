@@ -15,7 +15,7 @@ export default function Home(props) {
                 <Heading as="h1" size="2xl" color="gray.600" margin="2rem 0">
                     Welcome to GPU Guru
                 </Heading>
-                <Center gap="2rem" flexWrap="wrap" maxW='80vh'>
+                <Center gap="2rem" flexWrap="wrap" maxW='80%'>
                     {products.map((product) => (
                         <ProductCard key={product.uid} product={product} />
                     ))}
